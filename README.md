@@ -1,75 +1,64 @@
-# Online Shopping Application
+# Dockerized Shopping Web App
 
-This application was built using [Node.js 14](https://nodejs.org/en/), [Express](https://expressjs.com/), [EJS Template Engine](https://ejs.co/), [Stripe](https://stripe.com/fr), [PDFKit](https://pdfkit.org/), [Mongoose ORM](https://mongoosejs.com/) and [MongoDB](https://www.mongodb.com/) for persistence. It consists on an online shopping application.
+## Overview
 
-**The application was deployed on AWS Beanstalk, to access it, click [here](http://nodeshopping-env.eba-czedjv9y.eu-west-2.elasticbeanstalk.com/).**
+This project is a containerized version of a Node.js shopping web application using Docker and Docker Compose. It integrates a Node.js backend with a MongoDB database running in separate containers, communicating through a custom Docker network.
 
-## Running Application Process on your computer
+The main goal of this project is to demonstrate how a full-stack application can be containerized and managed using Docker.
 
-1. Download the application by Clicking [this link](https://github.com/gaetanBloch/nodejs-shopping/archive/master.zip)
-2. Unzip the application
-3. Download and Install [node.js](https://nodejs.org/en/download/) 
-4. Open a terminal
-5. Move to the root of the application
-6. Run `npm install`
-7. Run `npm start`
-8. Visit the website http://localhost:3000/ on your favourite browser
+---
 
-## Application
+## Tech Stack
 
-### Signup
+- Node.js
+- Express.js
+- MongoDB
+- Docker
+- Docker Compose
 
-![Signup](https://i.imgur.com/ugZY2Dr.png)
+---
 
-### Login
+## Features
 
-![Login](https://i.imgur.com/OWAsmFf.png)
+- Fully containerized backend and database
+- Multi-container setup using Docker Compose
+- Service communication using Docker networking
+- MongoDB running in a separate container
+- Environment-based configuration support
+- Persistent backend-database communication
 
-### Reset Password
+---
 
-![Reset Password](https://i.imgur.com/GIJbq4B.png)
+## Architecture
+Frontend (if any) / Browser
+|
+v
+Node.js Application Container
+|
+v
+MongoDB Container
+|
+Docker Network (bridge)
 
-### Shopping List
 
-![Shopping List](https://i.imgur.com/ygCs5Iq.png)
+---
 
-### Shopping List Pagination
+## How to Run the Project
 
-![Shopping List Pagination](https://i.imgur.com/vVH8HXW.png)
+### Using Docker Compose
 
-### Responsive Shopping List
+```bash
+docker compose up --build
+```
 
-![Responsive1](https://i.imgur.com/irFtMIB.png)
-![Responsive2](https://i.imgur.com/P7FploU.png)
+## Access Application
+http://localhost:3000
 
-### Add Product
+## Environment Variables
+MONGO_DB=shop
+PORT=3000
 
-![Add Product](https://i.imgur.com/dyHFrnJ.png)
-
-### Shopping List Admin
-
-![Shoppîng List Admin](https://i.imgur.com/N4vRGph.png)
-
-### Edit Product
-
-![Edit Product](https://i.imgur.com/XTbXF2E.png)
-
-### Cart Summary
-
-![Cart](https://i.imgur.com/TXY9vq7.png)
-
-### Cart Checkout
-
-![Cart Checkout](https://i.imgur.com/qU3vKw2.png)
-
-### Order Payment
-
-![Order Payment](https://imgur.com/kRL5YU1.png)
-
-### Passed Orders Summary
-
-![Orders Summary](https://imgur.com/9VJR4Xc.png)
-
-### Order invoice
-
-![Order invoice](https://imgur.com/b8pqelC.png)
+## Notes
+- MongoDB runs in a separate container and communicates via Docker service name (db)
+- Application and database are connected through a custom Docker bridge network
+- Ensure ports 3000 and 27017 are not blocked locally
